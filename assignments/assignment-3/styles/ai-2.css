@@ -1,181 +1,197 @@
-/* Improved Nature-Inspired Portfolio CSS - Fixing Layout Issues */
-
-/* Color Palette extracted from the image */
+/* General Styles */
 :root {
-    --primary-color: #2A6F4F; /* Deep green from trees */
-    --secondary-color: #1D4851; /* Dark blue-green from water */
-    --accent-color: #84B26D; /* Light green from foliage */
-    --text-color: #F5F5F5; /* Light color for readability */
-    --background-color: #0D1E25; /* Dark tone for depth */
+    --primary-color: #2B6E3D; /* Greenery */
+    --secondary-color: #2980B9; /* Sky Blue */
+    --accent-color: #ffffff; /* Waterfall White */
+    --dark-color: #1A1A1A; /* Deep Forest */
+    --light-color: #E8F6F3; /* Misty Water */
+    --font-family: 'Poppins', sans-serif;
 }
 
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+* {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family), Arial, Helvetica, sans-serif;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    width: 100%;
+}
+
+/* Hero Section (Header) */
+header {
+    background: url('../images/waterfall-bg.jpg') no-repeat center center/cover;
+    color: var(--accent-color);
     text-align: center;
-    line-height: 1.6;
+    padding: 6rem 0;
+    position: relative;
+    width: 100%;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+    position: relative;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 /* Navigation Bar */
 nav {
-    background: rgba(42, 111, 79, 0.9);
-    padding: 15px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-nav ol {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
-}
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    transition: color 0.3s;
-    padding: 8px 15px;
-}
-nav a:hover {
-    color: var(--accent-color);
-}
-
-/* Hero Section */
-header {
-    height: 100vh;
-    background: url('../images/waterfall-bg.jpg') no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background: var(--primary-color);
+    padding: 1rem;
     text-align: center;
-    color: var(--text-color);
-    padding: 20px;
-}
-header h1 {
-    font-size: 3em;
-    font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    margin-bottom: 10px;
-}
-header p {
-    max-width: 800px;
-    padding: 10px;
-    font-size: 1.2em;
+    width: 100%;
 }
 
-#profile-pic, #sfu-logo {
-    border-radius: 15px;
-    max-width: 120px;
-    margin-top: 10px;
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
 }
 
 /* Sections */
 section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
+    padding: 4rem 10%;
+    background: var(--light-color);
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
     text-align: center;
 }
 
-/* Improved Section Spacing */
-section + section {
-    margin-top: 40px;
+/* Project Section */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-/* Section Dividers */
-.divider {
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    margin: 50px auto;
-    width: 60%;
-}
-
-/* Projects Section */
-article {
-    background: rgba(42, 111, 79, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin-bottom: 40px;
-    text-align: left;
-}
-article h3 {
+.project-grid article {
+    background: var(--dark-color);
     color: var(--accent-color);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.project-grid article:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Iframe */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-grid a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.contact-grid a img:hover {
+    transform: scale(1.1);
 }
 
 /* Contact Form */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background: rgba(13, 30, 37, 0.8);
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-}
-input, textarea {
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background: var(--text-color);
-    color: var(--primary-color);
-    width: 100%;
-    font-size: 1em;
-}
-button {
     background: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 1em;
-}
-button:hover {
-    background: var(--accent-color);
+    padding: 2rem;
+    border-radius: 8px;
+    color: var(--accent-color);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px;
+form label, form input, form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
     background: var(--primary-color);
-    color: white;
-    margin-top: 50px;
+    color: var(--accent-color);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: var(--secondary-color);
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    nav ol {
-        flex-direction: column;
-        text-align: center;
-    }
+@media screen and (max-width: 768px) {
     header h1 {
-        font-size: 2.2em;
+        font-size: 2rem;
     }
-    header p {
-        font-size: 1em;
+    .nav-links {
+        flex-direction: column;
     }
-    #profile-pic, #sfu-logo {
-        max-width: 120px;
+    .project-grid {
+        grid-template-columns: 1fr;
     }
-    section {
-        padding: 50px 15px;
-    }
-    article {
-        text-align: center;
+    .contact-grid a img {
+        width: 30px;
+        height: 30px;
     }
 }
