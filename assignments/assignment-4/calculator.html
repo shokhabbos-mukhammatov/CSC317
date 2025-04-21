@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <script src="scripts/calculator.js"></script>
-    <link rel="stylesheet" href="styles/calculator.css">
+    <link id="css-theme" rel="stylesheet" href="styles/calculator.css">
+
 </head>
 <body class="synthwave-theme">
 <form id="calculator" name="calculator">
@@ -35,5 +36,41 @@
     <input type="button" value="." onclick="addValue(this.value)" id="dot" class="number">
     <input type="button" value="=" onclick="calculate()" id="equal" class="operator">
 </form>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+    <h3>Theme Switcher</h3>
+    <div class="theme-buttons">
+        <button class="theme-button active" data-theme="calculator">Default</button>
+        <button class="theme-button" data-theme="calculator-ai1">AI Theme 1</button>
+        <button class="theme-button" data-theme="calculator-ai2">AI Theme 2</button>
+    </div>
+</div>
+
+<!-- Theme Switcher Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeButtons = document.querySelectorAll('.theme-button');
+        const themeStylesheet = document.getElementById('css-theme');
+
+        function setActiveTheme(themeName) {
+            themeStylesheet.href = `styles/${themeName}.css`;
+            themeButtons.forEach(button => {
+                button.classList.toggle('active', button.dataset.theme === themeName);
+            });
+            localStorage.setItem('calcPreferredTheme', themeName);
+        }
+
+        themeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                setActiveTheme(this.dataset.theme);
+            });
+        });
+
+        const savedTheme = localStorage.getItem('calcPreferredTheme');
+        if (savedTheme) setActiveTheme(savedTheme);
+    });
+</script>
+
 </body>
 </html>

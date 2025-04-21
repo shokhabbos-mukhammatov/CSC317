@@ -4,8 +4,11 @@ function $(id) {
 }
 
 function addValue(value) {
-    $("display").value += value;
+    const display = $("display");
+    if (display.value === "NaN" || display.value === "Infinity") return;
+    display.value += value;
 }
+
 
 function ac() {
     $("calculation").value = "";
@@ -23,17 +26,31 @@ function percentage() {
 }
 
 function calculate() {
-    const display = $("display")
-    const calculation = $("calculation")
+    const display = $("display");
+    const calculation = $("calculation");
 
-    calculation.value = display.value
+    const input = display.value;
 
-    display.value = secureEval(calculation.value)
-    calculation.value = value;
+    try {
+        const result = secureEval(input);
+
+        if (!isFinite(result)) {
+            display.value = "Infinity";
+        } else if (isNaN(result)) {
+            display.value = "NaN";
+        } else {
+            display.value = result;
+        }
+
+        calculation.value = input;
+    } catch (error) {
+        display.value = "NaN";
+        calculation.value = input;
+    }
 }
 
+
 function secureEval(expression) {
-    // Only allow numbers, operators, parentheses, and decimal points
     const safePattern = /^[0-9+\-*/%.() ]+$/;
 
     if (!safePattern.test(expression)) {
@@ -55,7 +72,7 @@ function flashButton(id) {
     button.classList.add("pressed");
     setTimeout(() => {
         button.classList.remove("pressed");
-    }, 100); // Adjust for visual feel
+    }, 100);
 }
 
 document.addEventListener("keydown", function(event) {

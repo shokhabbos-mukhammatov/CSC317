@@ -1,0 +1,97 @@
+
+/* calculator-ai2.css - Pastel Neumorphism Theme */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+form#calculator {
+    display: grid;
+    width: 100%;
+    max-width: 420px;
+    margin: 2rem auto;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: #fdfdfd;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+#display, #calculation {
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1.4rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.75rem;
+    text-align: right;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), inset -2px -2px 5px rgba(255,255,255,0.6);
+    width: 100%;
+    grid-column: span 4;
+    box-sizing: border-box;
+}
+
+input, input[type="button"] {
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 100%;
+    max-width: 5rem;
+    aspect-ratio: 1 / 1;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+    background: #f0f0f3;
+    color: #333;
+    box-shadow: 5px 5px 10px #ccc, -5px -5px 10px #fff;
+    transition: all 0.2s ease-in-out;
+    justify-self: center;
+}
+
+input[type="button"]:hover {
+    background: #e6e6eb;
+    box-shadow: inset 2px 2px 5px #ccc, inset -2px -2px 5px #fff;
+}
+
+.operator {
+    background-color: #ffd6e8 !important;
+    color: #b3005e !important;
+    box-shadow: 4px 4px 8px #e5b6cc, -4px -4px 8px #fff;
+}
+
+.operator:hover {
+    background-color: #ffc4dc !important;
+}
+
+.special_fn {
+    background-color: #d0e9ff !important;
+    color: #004a77 !important;
+    font-weight: bold;
+    box-shadow: 4px 4px 8px #badcf4, -4px -4px 8px #ffffff;
+}
+
+.special_fn:hover {
+    background-color: #b3dfff !important;
+}
+
+.number {
+    background-color: #f0f0f3;
+}
+
+.number:hover {
+    background-color: #eaeaf0;
+}
