@@ -136,9 +136,11 @@ section {
 
 .project-grid {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--spacing-unit);
+    align-items: baseline;
 }
+
 .project-card {
     flex: 1 1 300px;
     padding: var(--spacing-unit);
@@ -270,7 +272,6 @@ form button {
     background-color: var(--accent-color);
     color: white;
     margin-top: 1rem;
-    margin-bottom: 1rem;
     border: none;
     padding: 0.75rem;
     font-size: 1rem;
