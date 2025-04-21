@@ -1,9 +1,11 @@
 // hello.js
-message = "JavaScript";
+const message = "JavaScript";
 
 const displayMessage = (message) => {
     return `Hello, ${message}!`;
 };
 
-console.log(displayMessage(message));
-
+function showGreeting() {
+    const output = document.getElementById("hello-output");
+    output.textContent = displayMessage(message);
+}
