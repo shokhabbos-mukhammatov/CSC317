@@ -1,5 +1,4 @@
 /* Hybrid CSS: Improved Version with Proper Project Alignment */
-
 /* 1. Global Styles & Variables */
 :root {
     --primary-color: #2B6E3D; /* Greenery */
@@ -185,7 +184,14 @@ form input:focus, form textarea:focus {
     border-color: var(--accent-color);
     outline: none;
 }
+.btn, .btn a {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    !important;
+}
 
+.btn,
 form button {
     background-color: var(--accent-color);
     color: var(--text-color);
@@ -195,7 +201,7 @@ form button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.btn:hover,
 form button:hover {
     background-color: var(--hover-color);
 }
@@ -223,4 +229,60 @@ form button:hover {
         width: 30px;
         height: 30px;
     }
+}
+
+
+/* Additional Fixes for Hybrid Theme */
+
+/* Greeting Section */
+#greeting {
+    background-color: var(--accent-color);
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    color: var(--text-color);
+}
+
+#hello-output {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.theme-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.theme-button {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-button.active {
+    background-color: var(--primary-color);
+    color: white;
 }
