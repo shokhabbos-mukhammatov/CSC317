@@ -1,0 +1,282 @@
+/*
+ Author: Shokhabbos Mukhammatov
+ Description: Styles for personal portfolio website with responsive design
+ */
+
+/* 1. Global Styles & Variables */
+:root {
+    --primary-color: #C4DFE6;
+    --secondary-color: #66A5AD;
+    --accent-color: #207dc8;
+    --hover-color: #1c68a3;
+    --text-color: #434242;
+    --spacing-unit: 1rem;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Typography */
+body {
+    font-family: 'Verdana', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+
+/* 2. Typography Fixes */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* 3. Layout & Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+header img {
+    margin-bottom: 20px;
+}
+
+#profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#sfu-logo {
+    border-radius: var(--border-radius);
+}
+
+/* 4. Navigation */
+nav {
+    background-color: var(--secondary-color);
+    padding: var(--spacing-unit);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    list-style: none;
+}
+
+.nav-links a {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+/* Embedded Iframe (Projects)   */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+iframe:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* 5. Sections & Cards */
+section {
+    padding: calc(var(--spacing-unit) * 2);
+    margin: var(--spacing-unit) 0;
+}
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+}
+.project-card {
+    flex: 1 1 300px;
+    padding: var(--spacing-unit);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+.project-grid article iframe {
+    display: block;
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 800px;
+}
+
+.project-grid article a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-grid article a:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+.contact-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-unit);
+}
+
+
+/* 6. Skills Section */
+.skills-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, scale 0.3s ease-in-out;
+}
+
+.skills-list li:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* 7. Responsive Design */
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-card {
+        flex: 1 1 100%;
+    }
+
+}
+
+
+a img {
+    margin-left: var(--spacing-unit);
+    margin-right: var(--spacing-unit);
+    max-width: 4rem;
+    max-height: 4rem;
+}
+
+/* 8. Contact Form */
+
+form {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background: white;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+form button:hover {
+    background-color: var(--hover-color);
+}

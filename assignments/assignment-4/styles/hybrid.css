@@ -1,0 +1,226 @@
+/* Hybrid CSS: Improved Version with Proper Project Alignment */
+
+/* 1. Global Styles & Variables */
+:root {
+    --primary-color: #2B6E3D; /* Greenery */
+    --secondary-color: #29b963; /* Sky Blue */
+    --accent-color: #ffffff; /* Waterfall White */
+    --hover-color: #1e8c49;
+    --text-color: #434242;
+    --spacing-unit: 1rem;
+    --border-radius: 12px;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family), Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. Hero Section */
+header {
+    background: url('../images/waterfall-bg.jpg') no-repeat center center/cover;
+    color: var(--accent-color);
+    text-align: center;
+    padding: 6rem 0;
+    position: relative;
+    width: 100%;
+}
+
+header h1 {
+    position: relative;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* 3. Navigation */
+nav {
+    background: var(--primary-color);
+    padding: var(--spacing-unit);
+    text-align: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    list-style: none;
+}
+
+.nav-links a {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+}
+
+/* 4. Sections */
+section {
+    padding: calc(var(--spacing-unit) * 2);
+    margin: var(--spacing-unit) auto;
+    max-width: 1200px;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. Project Grid with Proper Alignment */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-card {
+    flex: 1 1 calc(33% - 20px);
+    background: var(--dark-color);
+    color: var(--accent-color);
+    padding: var(--spacing-unit);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s;
+    text-align: center;
+    min-width: 300px;
+    max-width: 350px;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* 6. Skills List - Styles from styles.css */
+.skills-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, scale 0.3s ease-in-out;
+}
+
+.skills-list li:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 7. Responsive Iframe */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+/* 8. Contact Section */
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-grid a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.contact-grid a img:hover {
+    transform: scale(1.1);
+}
+
+/* 9. Contact Form */
+form {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--hover-color);
+}
+
+/* 10. Responsive Design */
+@media (max-width: 1024px) {
+    .project-card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-card {
+        flex: 1 1 100%;
+    }
+    .contact-grid a img {
+        width: 30px;
+        height: 30px;
+    }
+}
