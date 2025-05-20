@@ -86,7 +86,7 @@ header img {
     left: 0;
     width: 100%;
     padding: 15px 200px;
-    background: #4a98f7;
+    background: var(--hover-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 999;
 }
@@ -133,6 +133,27 @@ iframe {
 iframe:hover {
     transform: scale(1.01);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.iframe-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
@@ -249,6 +270,79 @@ section {
 .edu-card ul li {
     margin-bottom: 1rem;
 }
+
+/*Carousel container CSS and Animations*/
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    padding: 2rem 2rem;
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.carousel-slide > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: var(--hover-color);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: var(--accent-color);
+}
+
 
 /*!* Responsive for small screens *!*/
 .edu-header {

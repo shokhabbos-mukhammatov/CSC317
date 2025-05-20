@@ -43,30 +43,48 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            <div class="project-grid">
-                <article>
-                    <h3>IPhone Calculator</h3>
-                    <p>A webpage simulating the basic functionality of iPhone's calculator.</p>
-                    <a class="btn" href="calculator.html">Try it!</a>
-                </article>
+            <div class="carousel-container">
+                <button class="carousel-btn prev">&#10094;</button>
 
-                <article>
-                    <h3>Warehouse Management Application</h3>
-                    <p>Java Application which satisfies some major programming patterns like SOLID, MVP, etc. It reads & writes data into a CSV file.</p>
-                </article>
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <h3>IPhone Calculator</h3>
+                        <p>A webpage simulating the basic functionality of iPhone's calculator.</p>
+                        <br>
+                        <a class="btn" href="calculator.html">Try it!</a>
+                    </article>
 
-                <article>
-                    <h3>Mobile AI assistant</h3>
-                    <p>An AI assistant application for Android which has big functionality. Currently, in the progress of development.</p>
-                </article>
+                    <article class="carousel-slide">
+                        <h3>Warehouse Management Application</h3>
+                        <p>Java app following SOLID and MVP principles. Reads/writes CSV files.</p>
+                    </article>
 
-                <article>
-                    <h3>Portfolio Website</h3>
-                    <p>This responsive portfolio website showcasing my projects even there is only few and skills (you're looking at it!).</p>
-                    <iframe src="https://shokhabbos-mukhammatov.github.io/" height="500" width="1000" title="My first portfolio as a pet project."></iframe>
-                </article>
+                    <article class="carousel-slide">
+                        <h3>Mobile AI Assistant</h3>
+                        <p>Android AI assistant app (in development).</p>
+                    </article>
+
+                    <article class="carousel-slide">
+                        <h3>Portfolio Website</h3>
+                        <p>This responsive portfolio website showcasing my projects and skills.</p>
+                        <button class="btn toggle-iframe" data-src="https://shokhabbos-mukhammatov.github.io/">View Project</button>
+                        <div class="iframe-container"></div>
+                    </article>
+
+                    <article class="carousel-slide">
+                        <h3>Trip Tuner</h3>
+                        <p>An AI assistant web app for travel planning.</p>
+                        <button class="btn toggle-iframe" data-src="https://triptuner-1mqe.onrender.com/">View Project</button>
+                        <div class="iframe-container"></div>
+                    </article>
+                </div>
+
+                <button class="carousel-btn next">&#10095;</button>
             </div>
+
+            <div class="carousel-dots"></div>
         </section>
+
         <section id="greeting">
             <h2>Assignment 4 JS Demo</h2>
             <p>Demonstration of <b>hello.js</b> which includes ES6 (const, arrow functions, template literals).
@@ -136,16 +154,14 @@
             </ul>
         </section>
 
+        <div class="iframe-container"><iframe id="youtube"
+                     src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ"
+                     title="YouTube video player"
+                     allow="autoplay; encrypted-media"
+                     allowfullscreen
+                     referrerpolicy="strict-origin-when-cross-origin">
+        </iframe></div>
 
-        <iframe id="youtube"
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ"
-                title="YouTube video player"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
     </main>
 
     <footer>
@@ -199,63 +215,136 @@
         </div>
     </div>
 
-    <!-- Theme Switcher Script -->
+    <!-- All Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all theme buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme Switcher
             const themeButtons = document.querySelectorAll('.theme-button');
-            // Get the stylesheet link element
             const themeStylesheet = document.getElementById('css-theme');
 
-            // Function to set active theme
             function setActiveTheme(themeName) {
-                // Update stylesheet href
                 themeStylesheet.href = `styles/${themeName}.css`;
-
-                // Update active button state
                 themeButtons.forEach(button => {
-                    if (button.dataset.theme === themeName) {
-                        button.classList.add('active');
-                    } else {
-                        button.classList.remove('active');
-                    }
+                    button.classList.toggle('active', button.dataset.theme === themeName);
                 });
-
-                // Save preference to localStorage
                 localStorage.setItem('preferredTheme', themeName);
             }
 
-            // Add click event to all theme buttons
             themeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const themeName = this.dataset.theme;
-                    setActiveTheme(themeName);
+                button.addEventListener('click', function () {
+                    setActiveTheme(this.dataset.theme);
                 });
             });
 
-            // Check if there's a saved theme preference
             const savedTheme = localStorage.getItem('preferredTheme');
-            if (savedTheme) {
-                setActiveTheme(savedTheme);
+            if (savedTheme) setActiveTheme(savedTheme);
+
+            // Navbar Toggle
+            const nav = document.querySelector(".nav"),
+                navOpenBtn = document.querySelector(".navOpenBtn"),
+                navCloseBtn = document.querySelector(".navCloseBtn");
+
+            navOpenBtn?.addEventListener("click", () => nav.classList.add("openNav"));
+            navCloseBtn?.addEventListener("click", () => nav.classList.remove("openNav"));
+
+            //  On-demand Iframe Toggle (click-to-show/hide)
+            document.querySelectorAll('.toggle-iframe').forEach(button => {
+                button.addEventListener('click', function () {
+                    const container = this.nextElementSibling;
+                    if (!container.querySelector('iframe')) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = this.getAttribute('data-src');
+                        iframe.loading = 'lazy';
+                        iframe.title = 'Project Preview';
+                        container.appendChild(iframe);
+                        this.textContent = 'Hide Project';
+                    } else {
+                        container.innerHTML = '';
+                        this.textContent = 'View Project';
+                    }
+                });
+            });
+
+            // Carousel + Dots + Swipe
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            let currentIndex = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentIndex].classList.add('active');
             }
+
+            nextBtn?.addEventListener('click', () => {
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            prevBtn?.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            window.addEventListener('resize', updateCarousel);
+
+            // Swipe Support
+            let startX = 0;
+            track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+            track.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (diff > 50 && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                } else if (diff < -50 && currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            //  Lazy Load iframe on Viewport Entry
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframeBtn = entry.target.querySelector('.toggle-iframe');
+                        if (iframeBtn) {
+                            iframeBtn.style.visibility = 'visible';
+                            iframeBtn.style.opacity = '1';
+                            iframeBtn.style.transition = 'opacity 0.5s ease';
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+
+
+            slides.forEach(slide => {
+                if (slide.querySelector('.toggle-iframe')) {
+                    observer.observe(slide);
+                }
+            });
         });
     </script>
 
-    <script>
-        const nav = document.querySelector(".nav"),
-
-            navOpenBtn = document.querySelector(".navOpenBtn"),
-            navCloseBtn = document.querySelector(".navCloseBtn");
-
-        navOpenBtn.addEventListener("click", () => {
-            nav.classList.add("openNav");
-        });
-        navCloseBtn.addEventListener("click", () => {
-            nav.classList.remove("openNav");
-        });
-    </script>
-    <div class="button">
-        <a href="#"><i class="fas fa-arrow-up"></i></a>
-    </div>
 </body>
 </html>
