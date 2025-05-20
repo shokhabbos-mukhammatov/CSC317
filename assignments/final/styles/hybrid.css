@@ -188,7 +188,7 @@ form input:focus, form textarea:focus {
     display: inline-block;
     margin-top: 1rem;
     text-decoration: none;
-    !important;
+!important;
 }
 
 .btn,
@@ -285,4 +285,481 @@ form button:hover {
 .theme-button.active {
     background-color: var(--primary-color);
     color: white;
+}
+
+/* === Non-color styles from styles.css === */
+/*
+ Author: Shokhabbos Mukhammatov
+ Description: Styles for personal portfolio website with responsive design
+ */
+
+/* 1. Global Styles & Variables */
+:root {
+    --spacing-unit: 1rem;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Typography */
+body {
+    font-family: 'Verdana', sans-serif;
+    line-height: 1.6;
+    padding-top: 60px;
+}
+
+
+/* 2. Typography Fixes */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* 3. Layout & Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2);
+}
+
+header img {
+    margin-bottom: 20px;
+}
+
+#profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#sfu-logo {
+    border-radius: var(--border-radius);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+.nav,
+.nav .nav-links {
+    display: flex;
+    align-items: center;
+}
+.nav {
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+}
+.nav .logo {
+    font-size: 22px;
+    font-weight: 500;
+}
+.nav .nav-links {
+    column-gap: 20px;
+    list-style: none;
+}
+.nav .nav-links a {
+    transition: all 0.2s linear;
+}
+.nav .navOpenBtn,
+.nav .navCloseBtn {
+    display: none;
+}
+/* Embedded Iframe (Projects)   */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+iframe:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.iframe-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* 5. Sections & Cards */
+section {
+    padding: calc(var(--spacing-unit) * 2);
+    margin: var(--spacing-unit) 0;
+}
+
+.project-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+    align-items: baseline;
+}
+
+.project-card {
+    flex: 1 1 300px;
+    padding: var(--spacing-unit);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+.project-grid article iframe {
+    display: block;
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 800px;
+}
+
+.project-grid article a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+}
+
+.project-grid article a:hover {
+    transform: scale(1.05);
+}
+
+.contact-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-unit);
+}
+
+/* Education Cards */
+#education-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.edu-card {
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.edu-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.edu-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.edu-card p {
+    margin: 0.25rem 0 0;
+    line-height: 1.5;
+}
+
+.edu-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.edu-card ul li {
+    margin-bottom: 1rem;
+}
+
+/*Carousel container CSS and Animations*/
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    padding: 2rem 2rem;
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.carousel-slide > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+}
+
+
+/*!* Responsive for small screens *!*/
+.edu-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.edu-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+
+/* 6. Skills Section */
+.skills-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, scale 0.3s ease-in-out;
+}
+
+.skills-list li:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* 7. Responsive Design */
+
+@media screen and (max-width: 1160px) {
+    .nav {
+        padding: 15px 100px;
+    }
+}
+@media screen and (max-width: 950px) {
+    .nav {
+        padding: 15px 50px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .nav .navOpenBtn,
+    .nav .navCloseBtn {
+        display: block;
+    }
+    .nav {
+        padding: 15px 20px;
+    }
+    .nav .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100%;
+        max-width: 280px;
+        width: 100%;
+        padding-top: 100px;
+        row-gap: 30px;
+        flex-direction: column;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        z-index: 100;
+    }
+    .nav.openNav .nav-links {
+        left: 0;
+    }
+    .nav .navOpenBtn {
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .nav .navCloseBtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .project-card {
+        flex: 1 1 100%;
+    }
+    #education-list {
+        padding: 0 1rem;
+    }
+
+    .edu-card {
+        padding: 1rem;
+    }
+}
+
+
+a img {
+    margin-left: var(--spacing-unit);
+    margin-right: var(--spacing-unit);
+    max-width: 4rem;
+    max-height: 4rem;
+}
+
+/* 8. Contact Form */
+
+form {
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+}
+
+.btn,
+form button {
+    margin-top: 1rem;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+
+form button:hover {
+}
+
+.button a{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 7px 12px;;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
