@@ -9,9 +9,24 @@
 	<title>Shokhabbos Mukhammatov - CS Student Portfolio</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" >
     <link id="css-theme" rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
 </head>
 <body>
     <header>
+        <nav class="nav">
+            <i class="uil uil-bars navOpenBtn"></i>
+            <a href="#" class="logo">Shokhabbos's Portfolio</a>
+            <ul class="nav-links">
+                <i class="uil uil-times navCloseBtn"></i>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
         <h1>Shokhabbos Mukhammatov</h1>
         <img src="images/profile-pic.png" alt="Shokhabbos's portfolio picture" width="30%" height="30%" id="profile-pic">
         <img src="images/SFSU-logo.png" alt="SFSU logo" width="20%" height="20%" id="sfu-logo">
@@ -20,15 +35,7 @@
                 For that I definitely need to learn math and have dipper understanding of computer science.</p>
 
     </header>
-    <nav>
-        <ol class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ol>
-    </nav>
+
     <main>
         <section id="about">
             <h2>About Me</h2>
@@ -206,6 +213,21 @@
         });
     </script>
 
+    <script>
+        const nav = document.querySelector(".nav"),
 
+            navOpenBtn = document.querySelector(".navOpenBtn"),
+            navCloseBtn = document.querySelector(".navCloseBtn");
+
+        navOpenBtn.addEventListener("click", () => {
+            nav.classList.add("openNav");
+        });
+        navCloseBtn.addEventListener("click", () => {
+            nav.classList.remove("openNav");
+        });
+    </script>
+    <div class="button">
+        <a href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
 </body>
 </html>
