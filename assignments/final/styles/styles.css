@@ -88,6 +88,7 @@ header img {
     padding: 15px 200px;
     background: #4a98f7;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }
 .nav,
 .nav .nav-links {
@@ -195,6 +196,74 @@ section {
     padding: var(--spacing-unit);
 }
 
+/* Education Cards */
+#education-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.edu-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.edu-card h3 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.edu-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.edu-card p {
+    margin: 0.25rem 0 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+.edu-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.edu-card ul li {
+    margin-bottom: 1rem;
+}
+
+/*!* Responsive for small screens *!*/
+.edu-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.edu-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
 
 /* 6. Skills Section */
 .skills-list {
@@ -274,7 +343,13 @@ section {
     .project-card {
         flex: 1 1 100%;
     }
+    #education-list {
+        padding: 0 1rem;
+    }
 
+    .edu-card {
+        padding: 1rem;
+    }
 }
 
 
