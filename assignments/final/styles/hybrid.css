@@ -218,13 +218,6 @@ form button:hover {
         flex-direction: column;
         align-items: center;
     }
-    .project-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .project-card {
-        flex: 1 1 100%;
-    }
     .contact-grid a img {
         width: 30px;
         height: 30px;
@@ -440,47 +433,6 @@ section {
     margin: var(--spacing-unit) 0;
 }
 
-.project-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-unit);
-    align-items: baseline;
-}
-
-.project-card {
-    flex: 1 1 300px;
-    padding: var(--spacing-unit);
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-}
-
-
-.project-grid article iframe {
-    display: block;
-    margin: 1rem auto;
-    width: 90%;
-    max-width: 800px;
-}
-
-.project-grid article a {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.25rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: var(--border-radius);
-}
-
-.project-grid article a:hover {
-    transform: scale(1.05);
-}
-
 .contact-grid{
     display: flex;
     flex-direction: row;
@@ -691,9 +643,7 @@ section {
         font-size: 20px;
         cursor: pointer;
     }
-    .project-card {
-        flex: 1 1 100%;
-    }
+
     #education-list {
         padding: 0 1rem;
     }
