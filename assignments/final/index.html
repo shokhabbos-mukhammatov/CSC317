@@ -9,7 +9,7 @@
 	<title>Shokhabbos Mukhammatov - CS Student Portfolio</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" >
     <link id="css-theme" rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
             <i class="fas fa-bars navOpenBtn"></i>
             <a href="#" class="logo">Shokhabbos's Portfolio</a>
             <ul class="nav-links">
-                <i class="fas fa-times navCloseBtn"></i>
+                <li><i class="fas fa-times navCloseBtn"></i></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -255,6 +255,13 @@
             navOpenBtn?.addEventListener("click", () => nav.classList.add("openNav"));
             navCloseBtn?.addEventListener("click", () => nav.classList.remove("openNav"));
 
+            // Auto-close mobile menu on nav item click
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav').classList.remove('openNav');
+                });
+            });
+
             //  On-demand Iframe Toggle (click-to-show/hide)
             document.querySelectorAll('.toggle-iframe').forEach(button => {
                 button.addEventListener('click', function () {
@@ -349,6 +356,21 @@
                     observer.observe(slide);
                 }
             });
+        });
+            const scrollBtn = document.querySelector(".button");
+
+            window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+        });
+
+            // Optional: scroll to top when a link is clicked
+            scrollBtn.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent default anchor behavior
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
     </script>
 
