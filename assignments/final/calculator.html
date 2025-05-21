@@ -1,76 +1,57 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <script src="scripts/calculator.js"></script>
-    <link id="css-theme" rel="stylesheet" href="styles/calculator.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Shokhabbos Mukhammatov" />
+    <meta name="description" content="A responsive, interactive calculator simulating iPhone functionality, built by Shokhabbos Mukhammatov." />
+    <title>iPhone-Style Calculator | Shokhabbos Mukhammatov</title>
+    <link id="css-theme" rel="stylesheet" href="styles/calculator.css" />
+    <script defer src="scripts/calculator.js"></script>
 </head>
-<body class="synthwave-theme">
-<form id="calculator" name="calculator">
-    <input type="text" name="calculation" id="calculation" disabled>
-    <input type="text" name="display" id="display" disabled>
-    <input type="button" value="AC" onclick="ac()" id="all_clear" class="special_fn">
-    <input type="button" value="+/-" onclick="flipSign()" id="sign"  class="special_fn">
-    <input type="button" value="%" onclick="percentage()" id="percent" class="special_fn">
-    <input type="button" value="/" onclick="addValue(this.value)" id="divide" class="operator">
-
-    <input type="button" value="7" onclick="addValue(this.value)" id="seven" class="number">
-    <input type="button" value="8" onclick="addValue(this.value)" id="eight"  class="number">
-    <input type="button" value="9" onclick="addValue(this.value)" id="nine" class="number">
-    <input type="button" value="x" onclick="addValue('*')" id="multiply" class="operator">
-
-    <input type="button" value="4" onclick="addValue(this.value)" id="four" class="number">
-    <input type="button" value="5" onclick="addValue(this.value)" id="five" class="number">
-    <input type="button" value="6" onclick="addValue(this.value)" id="six" class="number">
-    <input type="button" value="-" onclick="addValue(this.value)" id="subtract" class="operator">
-
-    <input type="button" value="1" onclick="addValue(this.value)" id="one" class="number">
-    <input type="button" value="2" onclick="addValue(this.value)" id="two" class="number">
-    <input type="button" value="3" onclick="addValue(this.value)" id="three" class="number">
-    <input type="button" value="+" onclick="addValue(this.value)" id="add" class="operator">
-
-    <input type="button" value="" onclick="addValue(this.value)" id="blank" class="number" disabled>
-    <input type="button" value="0" onclick="addValue(this.value)" id="zero" class="number">
-    <input type="button" value="." onclick="addValue(this.value)" id="dot" class="number">
-    <input type="button" value="=" onclick="calculate()" id="equal" class="operator">
-</form>
-
-<!-- Theme Switcher -->
+<body>
 <div class="theme-switcher">
     <h3>Theme Switcher</h3>
     <div class="theme-buttons">
-        <button class="theme-button active" data-theme="calculator">Default</button>
-        <button class="theme-button" data-theme="calculator-ai1">AI Theme 1</button>
-        <button class="theme-button" data-theme="calculator-ai2">AI Theme 2</button>
+        <button class="theme-button active" data-theme="default">Default</button>
+        <button class="theme-button" data-theme="ai1">Cyberpunk</button>
+        <button class="theme-button" data-theme="ai2">Pastel</button>
     </div>
 </div>
 
-<!-- Theme Switcher Script -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const themeButtons = document.querySelectorAll('.theme-button');
-        const themeStylesheet = document.getElementById('css-theme');
+<main>
+    <div class="calculator-wrapper">
+        <form id="calculator" name="calculator">
+            <input type="text" id="calculation" readonly aria-label="Last Calculation">
+            <input type="text" id="display" readonly aria-label="Display Result">
 
-        function setActiveTheme(themeName) {
-            themeStylesheet.href = `styles/${themeName}.css`;
-            themeButtons.forEach(button => {
-                button.classList.toggle('active', button.dataset.theme === themeName);
-            });
-            localStorage.setItem('calcPreferredTheme', themeName);
-        }
+            <input type="button" value="AC" onclick="ac()" class="special_fn" aria-label="All Clear">
+            <input type="button" value="+/-" onclick="toggleSign()" class="special_fn" aria-label="Toggle Sign">
+            <input type="button" value="%" onclick="percent()" class="special_fn" aria-label="Percent">
+            <input type="button" value="/" onclick="addValue('/')" class="operator" aria-label="Divide">
 
-        themeButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                setActiveTheme(this.dataset.theme);
-            });
-        });
+            <input type="button" value="7" onclick="addValue('7')" class="number">
+            <input type="button" value="8" onclick="addValue('8')" class="number">
+            <input type="button" value="9" onclick="addValue('9')" class="number">
+            <input type="button" value="*" onclick="addValue('*')" class="operator" aria-label="Multiply">
 
-        const savedTheme = localStorage.getItem('calcPreferredTheme');
-        if (savedTheme) setActiveTheme(savedTheme);
-    });
-</script>
+            <input type="button" value="4" onclick="addValue('4')" class="number">
+            <input type="button" value="5" onclick="addValue('5')" class="number">
+            <input type="button" value="6" onclick="addValue('6')" class="number">
+            <input type="button" value="-" onclick="addValue('-')" class="operator" aria-label="Subtract">
 
+            <input type="button" value="1" onclick="addValue('1')" class="number">
+            <input type="button" value="2" onclick="addValue('2')" class="number">
+            <input type="button" value="3" onclick="addValue('3')" class="number">
+            <input type="button" value="+" onclick="addValue('+')" class="operator" aria-label="Add">
+
+            <input type="button" value="0" onclick="addValue('0')" class="number" style="grid-column: span 2;">
+            <input type="button" value="." onclick="addValue('.')" class="number">
+            <input type="button" value="=" onclick="calculate()" class="operator" aria-label="Equals">
+        </form>
+    </div>
+</main>
 </body>
 </html>
+
+

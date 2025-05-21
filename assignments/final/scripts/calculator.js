@@ -2,45 +2,51 @@ function $(id) {
     return document.getElementById(id);
 }
 
+function ac() {
+    $("display").value = "";
+    $("calculation").value = "";
+}
+
 function addValue(value) {
     const display = $("display");
     if (display.value === "NaN" || display.value === "Infinity") return;
     display.value += value;
 }
 
-
-function ac() {
-    $("calculation").value = "";
-    $("display").value = "";
+function toggleSign() {
+    const display = $("display");
+    if (!display.value) return;
+    if (display.value.startsWith('-')) {
+        display.value = display.value.slice(1);
+    } else {
+        display.value = '-' + display.value;
+    }
 }
 
-function flipSign() {
-    const display = $("display")
-    display.value = secureEval(display.value) * -1;
+function percent() {
+    const display = $("display");
+    if (!isNaN(display.value) && display.value !== "") {
+        display.value = parseFloat(display.value) / 100;
+    }
 }
 
-function percentage() {
-    const display = $("display")
-    display.value = secureEval(display.value) / 100;
+function secureEval(input) {
+    return Function('"use strict"; return (' + input + ')')();
 }
 
 function calculate() {
     const display = $("display");
     const calculation = $("calculation");
-
     const input = display.value;
-
     try {
         const result = secureEval(input);
-
         if (!isFinite(result)) {
             display.value = "Infinity";
         } else if (isNaN(result)) {
             display.value = "NaN";
         } else {
-            display.value = result;
+            display.value = formatResult(result);
         }
-
         calculation.value = input;
     } catch (error) {
         display.value = "NaN";
@@ -48,72 +54,36 @@ function calculate() {
     }
 }
 
-
-function secureEval(expression) {
-    const safePattern = /^[0-9+\-*/%.() ]+$/;
-
-    if (!safePattern.test(expression)) {
-        throw new Error("Invalid characters in expression.");
+function formatResult(value) {
+    if (value.toString().length > 12) {
+        return parseFloat(value).toExponential(5);
     }
-
-    try {
-        // eslint-disable-next-line no-new-func
-        return Function('"use strict"; return (' + expression + ')')();
-    } catch (e) {
-        throw new Error("Error evaluating expression.");
-    }
+    return value;
 }
 
-function flashButton(id) {
-    const button = $(id);
-    if (!button) return;
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.theme-button');
+    const cssTheme = document.getElementById('css-theme');
 
-    button.classList.add("pressed");
-    setTimeout(() => {
-        button.classList.remove("pressed");
-    }, 100);
-}
+    function setTheme(theme) {
+        let path = 'styles/calculator.css'; // default
+        if (theme === 'ai1') path = 'styles/calculator-ai1.css';
+        if (theme === 'ai2') path = 'styles/calculator-ai2.css';
 
-document.addEventListener("keydown", function(event) {
-    const key = event.key;
+        cssTheme.href = path;
+        localStorage.setItem('calcTheme', theme);
 
-    const keyMap = {
-        "0": "zero",
-        "1": "one",
-        "2": "two",
-        "3": "three",
-        "4": "four",
-        "5": "five",
-        "6": "six",
-        "7": "seven",
-        "8": "eight",
-        "9": "nine",
-        "+": "add",
-        "-": "subtract",
-        "*": "multiply",
-        "/": "divide",
-        "%": "percent",
-        ".": "dot",
-        "Enter": "equal",
-        "Escape": "all_clear",
-    };
-
-    // Perform calculator logic
-    if ("0123456789+-*/.%".includes(key)) {
-        addValue(key);
-    } else if (key === "Enter") {
-        event.preventDefault();
-        calculate();
-    } else if (key === "Escape") {
-        ac();
-    } else if (key === "Backspace") {
-        const display = $("display");
-        display.value = display.value.slice(0, -1);
+        buttons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.theme === theme);
+        });
     }
 
-    // Apply visual feedback
-    const btnId = keyMap[key];
-    if (btnId) {
-        flashButton(btnId);
-    }
+    const saved = localStorage.getItem('calcTheme') || 'default';
+    setTheme(saved);
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            setTheme(button.dataset.theme);
+        });
+    });
 });
